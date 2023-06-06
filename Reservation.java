@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Reservation {
+  
     // 호텔 기능 메서드
     public void hotel() {
         System.out.println("1. 예약확인    2. 취소");
@@ -56,7 +57,9 @@ public class Reservation {
             while (true) {
                 System.out.print("\n전화번호를 입력해주세요. : ");
                 phoneNum = sc.nextLine().trim();
+
                 String pattern = "^\\d{2,3}-\\d{3,4}-\\d{4}$";
+              
                 if (!(Pattern.matches(pattern, phoneNum))) {
                     System.out.println("올바른 휴대전화 형식이 아닙니다. ");
                 } else {
