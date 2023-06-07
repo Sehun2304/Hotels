@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Hotel {
     Map<String, ReservationInformation> hotelList = new LinkedHashMap<>();
-    Room room = new Room();
     long asset = 0;
 
     public void inputReservationInformation(String id, String room, String customerName, String phoneNumber, String appointmentDate, int price) {
