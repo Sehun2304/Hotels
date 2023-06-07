@@ -78,6 +78,7 @@ public class Reservation {
                     break;
                 }
             }
+
             while (true) {
                 try {
                     System.out.print("\n소지금을 입력해주세요. : ");
@@ -86,8 +87,9 @@ public class Reservation {
                         System.out.println("소지금이 부족하여 이용이 불가능합니다.");
                         Main.base();
                         break;
-                    } else {
-                        break;
+                    }
+                    else{
+                       break;
                     }
                 } catch (InputMismatchException i) {
                     System.out.println("잘못된 입력입니다.");
@@ -95,16 +97,27 @@ public class Reservation {
                     sc.nextLine();
                 }
             }
-            sc.nextLine();
-            System.out.print("이용하실 날짜를 입력해주세요 : ");
-            String appointmentDate = sc.nextLine();
-            System.out.println("예약이 완료되었습니다.");
+              sc.nextLine();
+            String appointmentDate;
+            while (true) {
+                System.out.print("\n이용하실 날짜를 입력해주세요(ex. 23-06-07) : ");
+                appointmentDate = sc.nextLine().trim();
+
+                String datePattern = "^\\d{2}-\\d{2}-\\d{2}$";
+
+                if (!(Pattern.matches(datePattern, appointmentDate))) {
+                    System.out.println("올바른 날짜 형식이 아닙니다. ");
+                } else {
+                    break;
+                }
+            }
+
+            System.out.println("\n예약이 완료되었습니다.");
             reservationInformation.makeReservation();
             id = reservationInformation.getMakeId();
             System.out.println("예약번호 : " + id);
             System.out.println();
-            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice(), now);
-
+            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice());
 
         } else if (confirm == 2) {
             System.out.println("메인으로 돌아갑니다");
