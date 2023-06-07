@@ -7,28 +7,34 @@ public class Room {
     private String roomName;
     private String roomSize;
     private int roomPrice;
-  
+
     private static List<Room> roomList;
-  
+
+    public Room() {}
+
     public Room(String roomNumber, String roomName, String roomSize, int roomPrice) {
         this.roomNumber = roomNumber;
         this.roomName = roomName;
         this.roomSize = roomSize;
         this.roomPrice = roomPrice;
     }
+
     public String getRoomNumber() {
         return roomNumber;
     }
+
     public String getRoomName() {
         return roomName;
     }
+
     public String getRoomSize() {
         return roomSize;
     }
+
     public int getRoomPrice() {
         return roomPrice;
     }
-  
+
 
     public static void RoomList() {
         roomList = new ArrayList<>();
@@ -44,13 +50,12 @@ public class Room {
         roomList.add(new Room("1010", "스위트룸", "40평", 350000));
     }
 
-
-    public List<Room> getRoomList() {
+    public static List<Room> getRoomList() {
         return roomList;
     }
 
     public String toString() {
-        return getRoomNumber() + "  |  " + getRoomSize() + "  |  " + getRoomPrice();
+        return getRoomNumber() + "호  |  " + getRoomName() + "  |  " + getRoomSize() + "  |  " + getRoomPrice();
     }
 
     public static void printRoomList() {
@@ -75,9 +80,5 @@ public class Room {
             }
         }
         throw new HotelsBadException("없는 번호입니다.");
-    }
-}
-    public List<Room> getRoomList() {
-        return roomList;
     }
 }

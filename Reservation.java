@@ -4,22 +4,6 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Reservation {
-  
-    // 호텔 기능 메서드
-    public void hotel() {
-        System.out.println("1. 예약확인    2. 취소");
-        Scanner sc = new Scanner(System.in);
-        String hotels = sc.nextLine();
-
-        if(hotels.equals("1")) {
-            // 모든 예약 목록 조회 기능
-
-        } else if(hotels.equals("2")) {
-            // 메인으로 돌아가기
-            System.out.println("메인으로 돌아갑니다.");
-        }
-    }
-
     // 고객 기능 메서드
     public void customer() {
         // 고객 기능 (예약, 자신의 예약만 조회, 예약취소)
@@ -36,7 +20,6 @@ public class Reservation {
             // 예약취소 메서드
         }
     }
-
 
     // 예약 메서드
     public void reservation() {
