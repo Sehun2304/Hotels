@@ -17,9 +17,9 @@ public class Hotel {
     public void printReservationInformation() {
         Set<String> keySet = hotelList.keySet();
         for (String key : keySet) {
-            System.out.println(key + " \n" + hotelList.get(key));
+            System.out.println("1. " + key + " \n" + hotelList.get(key));
         }
-        System.out.println("자산 : " + asset);
+        System.out.println("자산 : \n" + asset);
     }
 
     public void searchReservation(String searchId) {
