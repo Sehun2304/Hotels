@@ -16,10 +16,14 @@ public class Hotel {
 
     public void printReservationInformation() {
         Set<String> keySet = hotelList.keySet();
-        for (String key : keySet) {
-            System.out.println("1. " + key + " \n" + hotelList.get(key));
+        if (keySet.isEmpty()) {
+            System.out.println("예약이 없습니다.");
+        } else {
+            for (String key : keySet) {
+                System.out.println("1. " + key + " \n" + hotelList.get(key));
+            }
+            System.out.println("자산 : " + asset);
         }
-        System.out.println("자산 : " + asset);
     }
 
     public void searchReservation(String searchId) {
