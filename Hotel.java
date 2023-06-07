@@ -19,7 +19,7 @@ public class Hotel {
         for (String key : keySet) {
             System.out.println("1. " + key + " \n" + hotelList.get(key));
         }
-        System.out.println("자산 : \n" + asset);
+        System.out.println("자산 : " + asset);
     }
 
     public void searchReservation(String searchId) {
