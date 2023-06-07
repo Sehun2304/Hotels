@@ -1,11 +1,19 @@
 package hotels;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Reservation reservation = new Reservation();
         boolean start = true;
+
+        Room.RoomList();
+        Room.printRoomList();
+
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now);
 
         while (start) {
             Scanner sc = new Scanner(System.in);
@@ -18,8 +26,10 @@ public class Main {
             switch (select) {
                 case 1 :
                     reservation.hotel();
+                    break;
                 case 2 :
                     reservation.customer();
+                    break;
             }
         }
     }
