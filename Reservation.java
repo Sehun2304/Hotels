@@ -43,7 +43,6 @@ public class Reservation {
             System.out.println("예약번호를 입력하세요.");
             String cancelId = sc.nextLine().trim();
             hotel.cancelReservation(cancelId);
-
         }
     }
 
@@ -93,24 +92,38 @@ public class Reservation {
                 }
             }
 
-            while (true) {
-                try {
-                    System.out.print("\n소지금을 입력해주세요. : ");
-                    int money = sc.nextInt();
-                    if (money < selectedRoom.getRoomPrice()) {
-                        System.out.println("소지금이 부족하여 이용이 불가능합니다.");
-                        break;
-                    }
-                } catch (InputMismatchException i) {
-                    System.out.println("잘못된 입력입니다.");
-                    System.out.println("다시 입력해주세요.");
-                    sc.nextLine();
-                }
+            System.out.print("\n소지금을 입력해주세요. : ");
+            int money = sc.nextInt();
+            if (money < selectedRoom.getRoomPrice()) {
+                System.out.println("소지금이 부족하여 이용이 불가능합니다.");
+                return;
             }
+//
+//            sc.nextLine();
+//            System.out.print("이용하실 날짜를 입력해주세요(ex. 23-06-07) : ");
+//            String appointmentDate = sc.nextLine();
+//            String pattern = "^\\d{2,3}-\\d{3,4}-\\d{4}$";
+//
+//            if (!(Pattern.matches(pattern, phoneNum))) {
+//                System.out.println("올바른 휴대전화 형식이 아닙니다. ");
+//            } else {
+//                break;
+//            }
 
             sc.nextLine();
-            System.out.print("이용하실 날짜를 입력해주세요 : ");
-            String appointmentDate = sc.nextLine();
+            String appointmentDate;
+            while (true) {
+                System.out.print("\n이용하실 날짜를 입력해주세요(ex. 23-06-07) : ");
+                appointmentDate = sc.nextLine().trim();
+
+                String datePattern = "^\\d{2}-\\d{2}-\\d{2}$";
+
+                if (!(Pattern.matches(datePattern, appointmentDate))) {
+                    System.out.println("올바른 날짜 형식이 아닙니다. ");
+                } else {
+                    break;
+                }
+            }
 
             System.out.println("\n예약이 완료되었습니다.");
             reservationInformation.makeReservation();
