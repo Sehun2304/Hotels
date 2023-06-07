@@ -1,5 +1,4 @@
 package hotels;
-
 import java.util.List;
 import java.util.ArrayList;
 public class Room {
@@ -55,7 +54,7 @@ public class Room {
     }
 
     public String toString() {
-        return getRoomNumber() + "호  |  " + getRoomName() + "  |  " + getRoomSize() + "  |  " + getRoomPrice();
+        return getRoomNumber() + "호 | " + getRoomName() + " | " + getRoomSize() + " | " + getRoomPrice();
     }
 
     public static void printRoomList() {

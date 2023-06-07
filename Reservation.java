@@ -1,9 +1,35 @@
 package hotels;
 
+import memo.Memo;
+
+import java.sql.SQLOutput;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Reservation {
+    int textNum = 0;
+    Room room = new Room("", "", "", 0);
+    // 호텔 기능 메서드
+    public void hotel() {
+        System.out.println("1. 예약확인    2. 취소");
+        Scanner sc = new Scanner(System.in);
+        String hotels = sc.nextLine();
+
+        if(hotels.equals("1")) {
+            // 모든 예약 목록 조회 기능
+            System.out.println("sdsd");
+
+        } else if(hotels.equals("2")) {
+            // 메인으로 돌아가기
+            System.out.println("메인으로 돌아갑니다.");
+        }
+    }
+
     // 고객 기능 메서드
     public void customer() {
         // 고객 기능 (예약, 자신의 예약만 조회, 예약취소)
@@ -16,6 +42,7 @@ public class Reservation {
             reservation();
         } else if(customers.equals("2")) {
             // 고객 자신의 예약목록 조회 메서드
+            printReservationInformation();
         } else if(customers.equals("3")) {
             // 예약취소 메서드
         }
@@ -32,8 +59,11 @@ public class Reservation {
         sc.nextLine();
 
         if (confirm == 1) {
+            System.out.print("원하는 객실을 선택해주세요.");
+            String room = sc.nextLine();
+
             System.out.print("\n이름을 입력해주세요. : ");
-            String name = sc.nextLine().trim();
+            String customerName = sc.nextLine().trim();
 
             String phoneNum;
 
@@ -50,13 +80,38 @@ public class Reservation {
                 }
             }
 
+
+
             System.out.print("\n소지금을 입력해주세요. : ");
             String money = sc.nextLine().trim();
 
-            Customer customer = new Customer(name, phoneNum, money);
+            System.out.print("이용하실 날짜를 입력해주세요");
+            String appointmentDate = sc.nextLine();
+
+            System.out.println("예약이 완료되었습니다.");
+            System.out.println();
+
+            inputReservationInformation(textNum, room, customerName, phoneNum, appointmentDate);
+            textNum++;
 
         } else if (confirm == 2) {
             System.out.println("메인으로 돌아갑니다");
         }
     }
+
+    Map<Integer, ReservationInformation> hotelList = new LinkedHashMap<>();
+    ReservationInformation reservationinformation = new ReservationInformation("", "", "", "");
+
+    public void inputReservationInformation(int textNum, String room, String customerName, String phoneNumber, String appointmentDate) {
+        ReservationInformation reservationinformation = new ReservationInformation(room, customerName, phoneNumber, appointmentDate);
+        hotelList.put(textNum,reservationinformation);
+    }
+
+    public void printReservationInformation() {
+        Set<Integer> keySet = hotelList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key+1 + ". \n" + hotelList.get(key));
+        }
+    }
+
 }
