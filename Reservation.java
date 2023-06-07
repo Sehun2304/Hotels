@@ -1,10 +1,7 @@
 package hotels;
 
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Reservation {
@@ -63,7 +60,7 @@ public class Reservation {
         if (confirm == 1) {
             Room.RoomList();
             Room.printRoomList();
-            System.out.print("원하는 객실을 선택해주세요.");
+            System.out.print("\n원하는 객실을 선택해주세요. : ");
             String roomNum = sc.nextLine();
 
             Room selectedRoom = null;
@@ -96,17 +93,26 @@ public class Reservation {
                 }
             }
 
-            System.out.print("\n소지금을 입력해주세요. : ");
-            int money = sc.nextInt();
-            if (money < selectedRoom.getRoomPrice()) {
-                System.out.println("소지금이 부족하여 이용이 불가능합니다.");
-                return;
+            while (true) {
+                try {
+                    System.out.print("\n소지금을 입력해주세요. : ");
+                    int money = sc.nextInt();
+                    if (money < selectedRoom.getRoomPrice()) {
+                        System.out.println("소지금이 부족하여 이용이 불가능합니다.");
+                        break;
+                    }
+                } catch (InputMismatchException i) {
+                    System.out.println("잘못된 입력입니다.");
+                    System.out.println("다시 입력해주세요.");
+                    sc.nextLine();
+                }
             }
+
             sc.nextLine();
-            System.out.print("이용하실 날짜를 입력해주세요");
+            System.out.print("이용하실 날짜를 입력해주세요 : ");
             String appointmentDate = sc.nextLine();
 
-            System.out.println("예약이 완료되었습니다.");
+            System.out.println("\n예약이 완료되었습니다.");
             reservationInformation.makeReservation();
             id = reservationInformation.getMakeId();
             System.out.println("예약번호 : " + id);
