@@ -62,22 +62,4 @@ public class Room {
             System.out.println(r);
         }
     }
-
-    public String returnRoomSize(String roomNumber) throws HotelsBadException {
-        for (Room r : roomList) {
-            if (getRoomNumber().equals(roomNumber)) {
-                return getRoomSize();
-            }
-        }
-        throw new HotelsBadException("없는 번호입니다.");
-    }
-
-    public int returnPrice(String roomNumber) throws HotelsBadException {
-        for (Room r : roomList) {
-            if (getRoomNumber().equals(roomNumber)) {
-                return getRoomPrice();
-            }
-        }
-        throw new HotelsBadException("없는 번호입니다.");
-    }
 }

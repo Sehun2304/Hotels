@@ -11,7 +11,6 @@ public class Reservation {
     String id;
     Hotel hotel = new Hotel();
 
-    CustomerInformation customerInformation = new CustomerInformation();
     ReservationInformation reservationInformation = new ReservationInformation();
 
     // 호텔 기능 메서드
@@ -63,8 +62,22 @@ public class Reservation {
         sc.nextLine();
 
         if (confirm == 1) {
+            Room.RoomList();
+            Room.printRoomList();
             System.out.print("원하는 객실을 선택해주세요.");
-            String room = sc.nextLine();
+            String roomNum = sc.nextLine();
+
+            Room selectedRoom = null;
+            for (Room room : Room.getRoomList()) {
+                if (room.getRoomNumber().equals(roomNum)) {
+                    selectedRoom = room;
+                    break;
+                }
+            }
+            if (selectedRoom == null) {
+                System.out.println("존재하지 않는 객실입니다.");
+                return;
+            }
 
             System.out.print("\n이름을 입력해주세요. : ");
             String customerName = sc.nextLine().trim();
@@ -85,8 +98,12 @@ public class Reservation {
             }
 
             System.out.print("\n소지금을 입력해주세요. : ");
-            String money = sc.nextLine().trim();
-
+            int money = sc.nextInt();
+            if (money < selectedRoom.getRoomPrice()) {
+                System.out.println("소지금이 부족하여 이용이 불가능합니다.");
+                return;
+            }
+            sc.nextLine();
             System.out.print("이용하실 날짜를 입력해주세요");
             String appointmentDate = sc.nextLine();
 
@@ -96,7 +113,7 @@ public class Reservation {
             System.out.println("예약번호 : " + id);
             System.out.println();
 
-            hotel.inputReservationInformation(reservationInformation.getMakeId(), room, customerName, phoneNum, appointmentDate);
+            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate);
 
         } else if (confirm == 2) {
             System.out.println("메인으로 돌아갑니다");
