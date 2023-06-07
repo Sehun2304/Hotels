@@ -1,6 +1,33 @@
 package hotels;
 
 
+
+import java.util.UUID;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
+public class ReservationInformation {
+
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
+
+    String makeId;
+    String makeDate;
+    String room;
+    String customerName;
+    String phoneNumber;
+    String appointmentDate;
+
+    public ReservationInformation(String room, String customerName, String phoneNumber, String appointmentDate) {
+        this.room = room;
+        this.customerName = customerName;
+        this.phoneNumber = phoneNumber;
+        this.appointmentDate = appointmentDate;
+    }
+    public void makeReservation(){
+        this.makeId = UUID.randomUUID().toString();
+        this.makeDate = dateTimeFormatter.format(LocalDateTime.now());
+    }
+
 import java.util.UUID;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
