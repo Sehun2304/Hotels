@@ -1,8 +1,10 @@
 package hotels;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.TimeZone;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,8 +14,12 @@ public class Main {
         Room.RoomList();
         Room.printRoomList();
 
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println(now);
+//        Calendar calendar = Calendar.getInstance();
+//        Date date = calendar.getTime();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+//        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+//        String text = sdf.format(date);
+//        System.out.println(text);
 
         while (start) {
             Scanner sc = new Scanner(System.in);
