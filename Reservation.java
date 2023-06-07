@@ -92,11 +92,24 @@ public class Reservation {
                 }
             }
 
-            System.out.print("\n소지금을 입력해주세요. : ");
-            int money = sc.nextInt();
-            if (money < selectedRoom.getRoomPrice()) {
-                System.out.println("소지금이 부족하여 이용이 불가능합니다.");
-                return;
+
+            while (true) {
+                try {
+                    System.out.print("\n소지금을 입력해주세요. : ");
+                    int money = sc.nextInt();
+                    if (money < selectedRoom.getRoomPrice()) {
+                        System.out.println("소지금이 부족하여 이용이 불가능합니다.");
+                        Main.base();
+                        break;
+                    }
+                    else{
+                       break;
+                    }
+                } catch (InputMismatchException i) {
+                    System.out.println("잘못된 입력입니다.");
+                    System.out.println("다시 입력해주세요.");
+                    sc.nextLine();
+                }
             }
 //
 //            sc.nextLine();

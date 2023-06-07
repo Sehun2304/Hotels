@@ -4,10 +4,16 @@ import java.util.UUID;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
+
 public class ReservationInformation {
 
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
-
+//            Calendar calendar = Calendar.getInstance();
+//        Date date = calendar.getTime();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+//        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+//        String text = sdf.format(date);
+//        System.out.println(text);
     String makeId;
     String makeDate;
     String room;
