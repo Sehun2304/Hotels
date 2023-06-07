@@ -77,7 +77,4 @@ public class Room {
         throw new HotelsBadException("없는 번호입니다.");
     }
 }
-    public List<Room> getRoomList() {
-        return roomList;
-    }
-}
+
