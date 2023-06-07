@@ -24,7 +24,7 @@ public class Hotel {
 
     public void searchReservation(String searchId) {
         if (!hotelList.containsKey(searchId)) {
-            System.out.println("예약이 없습니다.");
+            System.out.println("예약이 없습니다.\n");
         } else {
             System.out.println(hotelList.get(searchId));
         }
@@ -32,10 +32,10 @@ public class Hotel {
 
     public void cancelReservation(String cancelId) {
         if (hotelList.remove(cancelId) == null) {
-            System.out.println("예약이 없습니다.");
+            System.out.println("예약이 없습니다.\n");
         } else {
             hotelList.remove(cancelId);
-            System.out.println("예약을 취소합니다.");
+            System.out.println("예약을 취소합니다.\n");
         }
     }
 }
