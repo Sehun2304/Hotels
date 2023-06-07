@@ -13,9 +13,7 @@ public class Customer {
         this.money = money;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
 
     public String getPhoneNum() {
         return phoneNum;

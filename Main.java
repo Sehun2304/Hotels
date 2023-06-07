@@ -28,7 +28,6 @@ public class Main {
             switch (select) {
                 case 1 :
                     reservation.hotel();
-
                     break;
                 case 2 :
                     reservation.customer();
