@@ -6,24 +6,13 @@ import java.util.*;
 
 public class Hotel {
     Map<String, ReservationInformation> hotelList = new LinkedHashMap<>();
+    Room room = new Room();
+    long asset = 0;
 
-    public void hotel() {
-        System.out.println("1. 예약확인    2. 취소");
-        Scanner sc = new Scanner(System.in);
-        String hotels = sc.nextLine();
-
-        if (hotels.equals("1")) {
-            // 모든 예약 목록 조회 기능
-
-        } else if (hotels.equals("2")) {
-            // 메인으로 돌아가기
-            System.out.println("메인으로 돌아갑니다.");
-        }
-    }
-
-    public void inputReservationInformation(String id, String room, String customerName, String phoneNumber, String appointmentDate) {
+    public void inputReservationInformation(String id, String room, String customerName, String phoneNumber, String appointmentDate, int price) {
         ReservationInformation reservationinformation = new ReservationInformation(room, customerName, phoneNumber, appointmentDate);
         hotelList.put(id, reservationinformation);
+        asset += price;
     }
 
     public void printReservationInformation() {
@@ -31,6 +20,7 @@ public class Hotel {
         for (String key : keySet) {
             System.out.println(key + " \n" + hotelList.get(key));
         }
+        System.out.println("자산 : " + asset);
     }
 
     public void searchReservation(String searchId) {

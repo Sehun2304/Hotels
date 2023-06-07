@@ -12,6 +12,7 @@ public class Reservation {
     Hotel hotel = new Hotel();
 
     ReservationInformation reservationInformation = new ReservationInformation();
+    Room room = new Room();
 
     // 호텔 기능 메서드
     public void hotel() {
@@ -112,7 +113,8 @@ public class Reservation {
             System.out.println("예약번호 : " + id);
             System.out.println();
 
-            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate);
+            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice());
+            System.out.println(selectedRoom.getRoomPrice());
 
         } else if (confirm == 2) {
             System.out.println("메인으로 돌아갑니다");
