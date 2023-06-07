@@ -13,9 +13,6 @@ public class Main {
 
         boolean start = true;
 
-        Room.RoomList();
-        Room.printRoomList();
-
 //        Calendar calendar = Calendar.getInstance();
 //        Date date = calendar.getTime();
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
