@@ -10,7 +10,9 @@ import java.util.regex.Pattern;
 public class Reservation {
     String id;
     Hotel hotel = new Hotel();
+
     CustomerInformation customerInformation = new CustomerInformation();
+    ReservationInformation reservationInformation = new ReservationInformation();
 
     // 호텔 기능 메서드
     public void hotel() {
@@ -39,23 +41,14 @@ public class Reservation {
             reservation();
         } else if (customers.equals("2")) {
             System.out.println("예약번호를 입력하세요.");
-            try {
-                String id = sc.nextLine().trim();
-                customerInformation.searchReservation(id);
-            } catch (HotelsBadException h) {
-                h.getMessage();
-            }
-
+            String searchId = sc.nextLine().trim();
+            hotel.searchReservation(searchId);
 
         } else if (customers.equals("3")) {
             System.out.println("예약번호를 입력하세요.");
-            try {
-                String id = sc.nextLine().trim();
-                customerInformation.cancelReservation(id);
-                System.out.println("예약이 취소되었습니다.");
-            } catch (HotelsBadException h) {
-                h.getMessage();
-            }
+            String cancelId = sc.nextLine().trim();
+            hotel.cancelReservation(cancelId);
+
         }
     }
 
@@ -98,14 +91,15 @@ public class Reservation {
             String appointmentDate = sc.nextLine();
 
             System.out.println("예약이 완료되었습니다.");
+            reservationInformation.makeReservation();
+            id = reservationInformation.getMakeId();
+            System.out.println("예약번호 : " + id);
             System.out.println();
 
-            hotel.inputReservationInformation(id, room, customerName, phoneNum, appointmentDate);
+            hotel.inputReservationInformation(reservationInformation.getMakeId(), room, customerName, phoneNum, appointmentDate);
 
         } else if (confirm == 2) {
             System.out.println("메인으로 돌아갑니다");
         }
     }
-}
-
 }

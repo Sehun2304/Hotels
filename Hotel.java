@@ -29,8 +29,24 @@ public class Hotel {
     public void printReservationInformation() {
         Set<String> keySet = hotelList.keySet();
         for (String key : keySet) {
-            System.out.println(key + 1 + ". \n" + hotelList.get(key));
+            System.out.println(key + " \n" + hotelList.get(key));
         }
     }
-}
+
+    public void searchReservation(String searchId) {
+        if (!hotelList.containsKey(searchId)) {
+            System.out.println("예약이 없습니다.");
+        } else {
+            System.out.println(hotelList.get(searchId));
+        }
+    }
+
+    public void cancelReservation(String cancelId) {
+        if (hotelList.remove(cancelId) == null) {
+            System.out.println("예약이 없습니다.");
+        } else {
+            hotelList.remove(cancelId);
+            System.out.println("예약을 취소합니다.");
+        }
+    }
 }
