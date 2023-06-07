@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Reservation reservation = new Reservation();
+        Hotel hotel = new Hotel();
+
         boolean start = true;
 
         Room.RoomList();
@@ -26,6 +28,7 @@ public class Main {
             switch (select) {
                 case 1 :
                     reservation.hotel();
+
                     break;
                 case 2 :
                     reservation.customer();

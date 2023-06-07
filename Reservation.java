@@ -70,7 +70,9 @@ public class Reservation {
             while (true) {
                 System.out.print("\n전화번호를 입력해주세요. : ");
                 phoneNum = sc.nextLine().trim();
+
                 String pattern = "^\\d{2,3}-\\d{3,4}-\\d{4}$";
+              
                 if (!(Pattern.matches(pattern, phoneNum))) {
                     System.out.println("올바른 휴대전화 형식이 아닙니다. ");
                 } else {

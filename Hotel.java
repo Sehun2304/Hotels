@@ -64,4 +64,3 @@ public class Hotel {
             System.out.println("예약이 취소되었습니다.");
         }
     }
-}

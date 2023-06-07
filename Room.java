@@ -6,6 +6,7 @@ public class Room {
     private String roomName;
     private String roomSize;
     private int roomPrice;
+
     private static List<Room> roomList;
 
     public Room() {}
@@ -16,18 +17,23 @@ public class Room {
         this.roomSize = roomSize;
         this.roomPrice = roomPrice;
     }
+
     public String getRoomNumber() {
         return roomNumber;
     }
+
     public String getRoomName() {
         return roomName;
     }
+
     public String getRoomSize() {
         return roomSize;
     }
+
     public int getRoomPrice() {
         return roomPrice;
     }
+
 
     public static void RoomList() {
         roomList = new ArrayList<>();
