@@ -20,12 +20,15 @@ public class ReservationInformation {
     String customerName;
     String phoneNumber;
     String appointmentDate;
+    String now;
+
     ReservationInformation() {}
-    public ReservationInformation(String room, String customerName, String phoneNumber, String appointmentDate) {
+    public ReservationInformation(String room, String customerName, String phoneNumber, String appointmentDate, String now) {
         this.room = room;
         this.customerName = customerName;
         this.phoneNumber = phoneNumber;
         this.appointmentDate = appointmentDate;
+        this.now = now;
     }
     public void makeReservation() {
         this.makeId = UUID.randomUUID().toString();
@@ -52,14 +55,17 @@ public class ReservationInformation {
     public String getAppointmentDate() {
         return appointmentDate;
     }
-    public void setAppointmentDate(String appointmentDate) {
-        this.appointmentDate = appointmentDate;
+    public String getNow() {
+        return now;
     }
     public String getMakeId() {
         return makeId;
     }
     public String getMakeDate() {
         return makeDate;
+    }
+    public void setAppointmentDate(String appointmentDate) {
+        this.appointmentDate = appointmentDate;
     }
     public String toString() {
         return "객실 : " + room + "\n예약자 이름 : " + customerName + "\n전화번호 : " + phoneNumber + "\n예약날짜 : " + appointmentDate;

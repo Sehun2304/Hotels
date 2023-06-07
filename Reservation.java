@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class Reservation {
     String id;
+    String now;
     Hotel hotel = new Hotel();
     ReservationInformation reservationInformation = new ReservationInformation();
 
@@ -97,12 +98,14 @@ public class Reservation {
             sc.nextLine();
             System.out.print("이용하실 날짜를 입력해주세요 : ");
             String appointmentDate = sc.nextLine();
-            System.out.println("\n예약이 완료되었습니다.");
+            System.out.println("예약이 완료되었습니다.");
             reservationInformation.makeReservation();
             id = reservationInformation.getMakeId();
             System.out.println("예약번호 : " + id);
             System.out.println();
-            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice());
+            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice(), now);
+
+
         } else if (confirm == 2) {
             System.out.println("메인으로 돌아갑니다");
         }
