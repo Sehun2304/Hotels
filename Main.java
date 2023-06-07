@@ -9,6 +9,8 @@ import java.util.TimeZone;
 public class Main {
     public static void main(String[] args) {
         Reservation reservation = new Reservation();
+        Hotel hotel = new Hotel();
+
         boolean start = true;
 
         Room.RoomList();
