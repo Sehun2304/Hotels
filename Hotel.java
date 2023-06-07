@@ -6,36 +6,25 @@ import java.util.*;
 
 public class Hotel {
     Map<String, ReservationInformation> hotelList = new LinkedHashMap<>();
+    long asset = 0;
 
-    public void hotel() {
-        System.out.println("1. 예약확인    2. 취소");
-        Scanner sc = new Scanner(System.in);
-        String hotels = sc.nextLine();
-
-        if (hotels.equals("1")) {
-            // 모든 예약 목록 조회 기능
-
-        } else if (hotels.equals("2")) {
-            // 메인으로 돌아가기
-            System.out.println("메인으로 돌아갑니다.");
-        }
-    }
-
-    public void inputReservationInformation(String id, String room, String customerName, String phoneNumber, String appointmentDate) {
+    public void inputReservationInformation(String id, String room, String customerName, String phoneNumber, String appointmentDate, int price) {
         ReservationInformation reservationinformation = new ReservationInformation(room, customerName, phoneNumber, appointmentDate);
         hotelList.put(id, reservationinformation);
+        asset += price;
     }
 
     public void printReservationInformation() {
         Set<String> keySet = hotelList.keySet();
         for (String key : keySet) {
-            System.out.println(key + " \n" + hotelList.get(key));
+            System.out.println("1. " + key + " \n" + hotelList.get(key));
         }
+        System.out.println("자산 : \n" + asset);
     }
 
     public void searchReservation(String searchId) {
         if (!hotelList.containsKey(searchId)) {
-            System.out.println("예약이 없습니다.");
+            System.out.println("예약이 없습니다.\n");
         } else {
             System.out.println(hotelList.get(searchId));
         }
@@ -43,10 +32,10 @@ public class Hotel {
 
     public void cancelReservation(String cancelId) {
         if (hotelList.remove(cancelId) == null) {
-            System.out.println("예약이 없습니다.");
+            System.out.println("예약이 없습니다.\n");
         } else {
             hotelList.remove(cancelId);
-            System.out.println("예약을 취소합니다.");
+            System.out.println("예약을 취소합니다.\n");
         }
     }
 }
