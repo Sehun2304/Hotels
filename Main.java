@@ -1,16 +1,21 @@
 package hotels;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Reservation reservation = new Reservation();
+        Hotel hotel = new Hotel();
+
+        boolean start = true;
 
         Room.RoomList();
         Room.printRoomList();
-//        reservation.reservation();
 
-        boolean start = true;
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now);
 
         while (start) {
             Scanner sc = new Scanner(System.in);
