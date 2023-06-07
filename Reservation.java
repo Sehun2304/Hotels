@@ -1,13 +1,12 @@
 package hotels;
 
-
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class Reservation {
     String id;
+    String now;
     Hotel hotel = new Hotel();
-
     ReservationInformation reservationInformation = new ReservationInformation();
 
     // 호텔 기능 메서드
@@ -15,10 +14,8 @@ public class Reservation {
         System.out.println("1. 예약확인    2. 취소");
         Scanner sc = new Scanner(System.in);
         String hotels = sc.nextLine();
-
         if (hotels.equals("1")) {
             hotel.printReservationInformation();
-
         } else if (hotels.equals("2")) {
             // 메인으로 돌아가기
             System.out.println("메인으로 돌아갑니다.");
@@ -31,14 +28,12 @@ public class Reservation {
         System.out.println("1. 예약    2. 조회    3. 예약취소");
         Scanner sc = new Scanner(System.in);
         String customers = sc.nextLine();
-
         if (customers.equals("1")) {
             reservation();
         } else if (customers.equals("2")) {
             System.out.println("예약번호를 입력하세요.");
             String searchId = sc.nextLine().trim();
             hotel.searchReservation(searchId);
-
         } else if (customers.equals("3")) {
             System.out.println("예약번호를 입력하세요.");
             String cancelId = sc.nextLine().trim();
@@ -49,19 +44,16 @@ public class Reservation {
     // 예약 메서드
     public void reservation() {
         Scanner sc = new Scanner(System.in);
-
         System.out.println("예약 하시겠습니까?");
         System.out.println("1. 확인    | 2. 취소");
         System.out.print("입력 : ");
         int confirm = sc.nextInt();
         sc.nextLine();
-
         if (confirm == 1) {
             Room.RoomList();
             Room.printRoomList();
             System.out.print("\n원하는 객실을 선택해주세요. : ");
             String roomNum = sc.nextLine();
-
             Room selectedRoom = null;
             for (Room room : Room.getRoomList()) {
                 if (room.getRoomNumber().equals(roomNum)) {
@@ -73,25 +65,19 @@ public class Reservation {
                 System.out.println("존재하지 않는 객실입니다.");
                 return;
             }
-
             System.out.print("\n이름을 입력해주세요. : ");
             String customerName = sc.nextLine().trim();
-
             String phoneNum;
-
             while (true) {
                 System.out.print("\n전화번호를 입력해주세요. : ");
                 phoneNum = sc.nextLine().trim();
-
                 String pattern = "^\\d{2,3}-\\d{3,4}-\\d{4}$";
-
                 if (!(Pattern.matches(pattern, phoneNum))) {
                     System.out.println("올바른 휴대전화 형식이 아닙니다. ");
                 } else {
                     break;
                 }
             }
-
 
             while (true) {
                 try {
@@ -111,19 +97,7 @@ public class Reservation {
                     sc.nextLine();
                 }
             }
-//
-//            sc.nextLine();
-//            System.out.print("이용하실 날짜를 입력해주세요(ex. 23-06-07) : ");
-//            String appointmentDate = sc.nextLine();
-//            String pattern = "^\\d{2,3}-\\d{3,4}-\\d{4}$";
-//
-//            if (!(Pattern.matches(pattern, phoneNum))) {
-//                System.out.println("올바른 휴대전화 형식이 아닙니다. ");
-//            } else {
-//                break;
-//            }
-
-            sc.nextLine();
+              sc.nextLine();
             String appointmentDate;
             while (true) {
                 System.out.print("\n이용하실 날짜를 입력해주세요(ex. 23-06-07) : ");
