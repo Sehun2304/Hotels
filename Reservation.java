@@ -36,7 +36,6 @@ public class Reservation {
         String customers = sc.nextLine();
 
         if (customers.equals("1")) {
-            // 예약 메서드
             reservation();
         } else if (customers.equals("2")) {
             System.out.println("예약번호를 입력하세요.");
