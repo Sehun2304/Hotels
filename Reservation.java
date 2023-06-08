@@ -1,5 +1,8 @@
 package hotels;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -82,7 +85,7 @@ public class Reservation {
             while (true) {
                 try {
                     System.out.print("\n소지금을 입력해주세요. : ");
-                    int money = sc.nextInt();
+                    long money = sc.nextLong();
                     if (money < selectedRoom.getRoomPrice()) {
                         System.out.println("소지금이 부족하여 이용이 불가능합니다.");
                         Main.base();
@@ -108,16 +111,23 @@ public class Reservation {
                 if (!(Pattern.matches(datePattern, appointmentDate))) {
                     System.out.println("올바른 날짜 형식이 아닙니다. ");
                 } else {
-                    break;
+                    LocalDate today = LocalDate.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
+
+                    int result = (appointmentDate).compareTo(String.valueOf(today));
+
+                    if (result < 0) {
+                        System.out.println("지난 날짜입니다.");
+                    } else {
+                        break;
+                    }
                 }
             }
 
-            System.out.println("\n예약이 완료되었습니다.");
             reservationInformation.makeReservation();
             id = reservationInformation.getMakeId();
-            System.out.println("예약번호 : " + id);
             System.out.println();
-            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice(),now);
+            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice());
 
         } else if (confirm == 2) {
             System.out.println("메인으로 돌아갑니다");

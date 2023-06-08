@@ -62,6 +62,6 @@ public class ReservationInformation {
         this.appointmentDate = appointmentDate;
     }
     public String toString() {
-        return "객실 : " + room + "\n예약자 이름 : " + customerName + "\n전화번호 : " + phoneNumber + "\n예약날짜 : " + appointmentDate;
+        return "객실 : " + room + "\n예약자 이름 : " + customerName + "\n전화번호 : " + phoneNumber + "\n예약날짜 : " + appointmentDate + "\n예약시간 : " + now;
     }
 }
