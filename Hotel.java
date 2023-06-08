@@ -9,12 +9,20 @@ public class Hotel {
     Map<String, ReservationInformation> hotelList = new LinkedHashMap<>();
     long asset = 0;
 
-    public void inputReservationInformation(String id, String room, String customerName, String phoneNumber, String appointmentDate, int price, String now) {
+    public void inputReservationInformation(String id, String room, String customerName, String phoneNumber, String appointmentDate, int price) {
         if (reservationAvailable(room, appointmentDate)) {
+
+            Calendar calendar = Calendar.getInstance();
+            Date date = calendar.getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+            sdf.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+            String now = sdf.format(date);
+
             ReservationInformation reservationInformation = new ReservationInformation(room, customerName, phoneNumber, appointmentDate, now);
             hotelList.put(id, reservationInformation);
             asset += price;
             System.out.println("예약이 완료되었습니다.\n");
+            System.out.println("예약번호 : " + id);
         } else {
             System.out.println("해당 객실은 이미 예약된 날짜입니다. 다른 날짜나 다른 객실을 선택해주세요.\n");
         }
@@ -26,8 +34,7 @@ public class Hotel {
             }
         }
         return true; // 예약 가능
-    } // 이부분입니다
-
+    }
 
     public void printReservationInformation() {
         Set<String> keySet = hotelList.keySet();
@@ -36,7 +43,9 @@ public class Hotel {
             System.out.println("자산 : " + asset);
         } else {
             for (String key : keySet) {
-                System.out.println("1. " + key + " \n" + hotelList.get(key));
+                System.out.println("=======================");
+                System.out.println("예약번호 : " + key + " \n" + hotelList.get(key));
+                System.out.println("=======================");
             }
             System.out.println("자산 : " + asset);
         }
@@ -47,13 +56,6 @@ public class Hotel {
             System.out.println("예약이 없습니다.\n");
         } else {
             System.out.println(hotelList.get(searchId));
-
-            Calendar calendar = Calendar.getInstance();
-            Date date = calendar.getTime();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-            sdf.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
-            String now = sdf.format(date);
-            System.out.println(now);
         }
     }
 
