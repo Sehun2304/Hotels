@@ -99,10 +99,10 @@ public class Reservation {
                     sc.nextLine();
                 }
             }
-            while (true) {
-                sc.nextLine();
-                String appointmentDate;
+            sc.nextLine();
+            String appointmentDate;
 
+            while (true) {
                 Calendar cal = Calendar.getInstance();
                 LocalDate nowYear = LocalDate.now();
                 DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yyyy");
@@ -110,19 +110,15 @@ public class Reservation {
                 System.out.print("년도를 입력하세요 : ");
 
                 int year = sc.nextInt();
-                String yearString = "" + year;
-                int resultYear = (yearString).compareTo(String.valueOf(nowYear));
-                if (resultYear < 0) {
-                    System.out.println("지난 날짜입니다.");
-                    break;
-                }
+//                String yearString = "" + year;
+//                int resultYear = (yearString).compareTo(String.valueOf(nowYear));
+//                if (resultYear < 0) {
+//                    System.out.println("지난 날짜입니다.");
+//                    break;
+//                }
                 System.out.print("월을 입력하세요 : ");
-                int month = sc.nextInt();
 
-                if (!(0 < month && month < 13)) {
-                    System.out.println("잘못된 입력입니다.");
-                    break;
-                }
+                int month = sc.nextInt();
 
                 cal.set(Calendar.YEAR, year); //입력받은 년도로 세팅
                 cal.set(Calendar.MONTH, month); //입력받은 월로 세팅
@@ -151,13 +147,14 @@ public class Reservation {
                 }
                 System.out.println();
                 System.out.println("-----------------------------");
+
                 System.out.print("예약하실 날짜를 입력해주세요. : ");
                 int day = sc.nextInt();
 
                 if (!(0 < day && day <= end)) {
                     System.out.println("잘못된 입력입니다.");
                 } else {
-                    appointmentDate = yearString + "-" + month + "-" + day;
+                    appointmentDate = year + "-" + month + "-" + day;
 
                     LocalDate today = LocalDate.now();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
