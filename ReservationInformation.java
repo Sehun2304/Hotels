@@ -16,6 +16,7 @@ public class ReservationInformation {
     String now;
 
     ReservationInformation() {}
+
     public ReservationInformation(String room, String customerName, String phoneNumber, String appointmentDate, String now) {
         this.room = room;
         this.customerName = customerName;

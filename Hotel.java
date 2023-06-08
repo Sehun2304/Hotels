@@ -19,6 +19,7 @@ public class Hotel {
         Set<String> keySet = hotelList.keySet();
         if (keySet.isEmpty()) {
             System.out.println("예약이 없습니다.");
+            System.out.println("자산 : " + asset);
         } else {
             for (String key : keySet) {
                 System.out.println("1. " + key + " \n" + hotelList.get(key));
@@ -43,10 +44,22 @@ public class Hotel {
     }
 
     public void cancelReservation(String cancelId) {
-        if (hotelList.remove(cancelId) == null) {
+        ReservationInformation canceledReservation = hotelList.remove(cancelId);
+        if (canceledReservation == null) {
             System.out.println("예약이 없습니다.\n");
         } else {
-            hotelList.remove(cancelId);
+            Room canceledRoom = null;
+            for (Room room : Room.getRoomList()) {
+                if (room.getRoomNumber().equals(canceledReservation.getRoom())) {
+                    canceledRoom = room;
+                    break;
+                }
+            }
+            int canceledPrice = 0;
+            if (canceledRoom != null) {
+                canceledPrice = canceledRoom.getRoomPrice();
+            }
+            asset -= canceledPrice;
             System.out.println("예약을 취소합니다.\n");
         }
     }
