@@ -90,9 +90,8 @@ public class Reservation {
                         System.out.println("소지금이 부족하여 이용이 불가능합니다.");
                         Main.base();
                         break;
-                    }
-                    else{
-                       break;
+                    } else {
+                        break;
                     }
                 } catch (InputMismatchException i) {
                     System.out.println("잘못된 입력입니다.");
@@ -100,17 +99,66 @@ public class Reservation {
                     sc.nextLine();
                 }
             }
-              sc.nextLine();
-            String appointmentDate;
             while (true) {
-                System.out.print("\n이용하실 날짜를 입력해주세요(ex. 23-06-07) : ");
-                appointmentDate = sc.nextLine().trim();
+                sc.nextLine();
+                String appointmentDate;
 
-                String datePattern = "^\\d{2}-\\d{2}-\\d{2}$";
+                Calendar cal = Calendar.getInstance();
+                LocalDate nowYear = LocalDate.now();
+                DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yyyy");
 
-                if (!(Pattern.matches(datePattern, appointmentDate))) {
-                    System.out.println("올바른 날짜 형식이 아닙니다. ");
+                System.out.print("년도를 입력하세요 : ");
+
+                int year = sc.nextInt();
+                String yearString = "" + year;
+                int resultYear = (yearString).compareTo(String.valueOf(nowYear));
+                if (resultYear < 0) {
+                    System.out.println("지난 날짜입니다.");
+                    break;
+                }
+                System.out.print("월을 입력하세요 : ");
+                int month = sc.nextInt();
+
+                if (!(0 < month && month < 13)) {
+                    System.out.println("잘못된 입력입니다.");
+                    break;
+                }
+
+                cal.set(Calendar.YEAR, year); //입력받은 년도로 세팅
+                cal.set(Calendar.MONTH, month); //입력받은 월로 세팅
+
+                System.out.println("---------[" + year + "년 " + month + "월]---------");
+                System.out.println("  일  월  화   수  목  금  토");
+                cal.set(year, month - 1, 1); //입력받은 월의 1일로 세팅
+
+                int end = cal.getActualMaximum(Calendar.DATE); //해당 월 마지막 날짜
+                int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK); //해당 날짜의 요일(1:일요일 … 7:토요일)
+
+                for (int i = 1; i <= end; i++) {
+                    if (i == 1) {
+                        for (int j = 1; j < dayOfWeek; j++) {
+                            System.out.print("    ");
+                        }
+                    }
+                    if (i < 10) { //한자릿수일 경우 공백을 추가해서 줄맞추기
+                        System.out.print(" ");
+                    }
+                    System.out.print(" " + i + " ");
+                    if (dayOfWeek % 7 == 0) { //한줄에 7일씩 출력
+                        System.out.println();
+                    }
+                    dayOfWeek++;
+                }
+                System.out.println();
+                System.out.println("-----------------------------");
+                System.out.print("예약하실 날짜를 입력해주세요. : ");
+                int day = sc.nextInt();
+
+                if (!(0 < day && day <= end)) {
+                    System.out.println("잘못된 입력입니다.");
                 } else {
+                    appointmentDate = yearString + "-" + month + "-" + day;
+
                     LocalDate today = LocalDate.now();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
 
