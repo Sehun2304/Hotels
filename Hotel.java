@@ -1,7 +1,5 @@
 package hotels;
 
-import java.awt.*;
-import java.awt.List;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
