@@ -117,7 +117,7 @@ public class Reservation {
             id = reservationInformation.getMakeId();
             System.out.println("예약번호 : " + id);
             System.out.println();
-            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice());
+            hotel.inputReservationInformation(reservationInformation.getMakeId(), roomNum, customerName, phoneNum, appointmentDate, selectedRoom.getRoomPrice(),now);
 
         } else if (confirm == 2) {
             System.out.println("메인으로 돌아갑니다");
