@@ -123,12 +123,13 @@ public class Reservation {
                 if(year < thisYear ) {
                     System.out.println("지난 년도입니다.");
                     System.out.println("다시 입력해주세요");
-                } else{
+                } else {
                     System.out.print("월을 입력하세요 : ");
                     int month = sc.nextInt();
 
-                    if(month < thisMonth || month > thisMonth) {
-                        System.out.println("지난 달입니다.");
+
+                    if (year == thisYear && (month < thisMonth || month > 12) || year > thisYear && (month < 0 || month > 12)) {
+                        System.out.println("예약이 불가능한 달입니다.");
                         System.out.println("다시 입력해주세요");
                     } else {
                         cal.set(Calendar.YEAR, year); //입력받은 년도로 세팅
@@ -162,7 +163,9 @@ public class Reservation {
                         System.out.print("예약하실 날짜를 입력해주세요. : ");
                         int day = sc.nextInt();
 
-                        if (!(thisDay <= day && day <= end)) {
+                        if ((year == thisYear && month == thisMonth && thisDay > day) ||
+                                year == thisYear && month > thisMonth && (day < 0 || day > end) ||
+                        year > thisYear && (day < 0 || day > end )) {
                             System.out.println("잘못된 입력입니다.");
                         } else {
                             appointmentDate = year + "-" + month + "-" + day;
@@ -173,7 +176,7 @@ public class Reservation {
                             int result = (appointmentDate).compareTo(String.valueOf(today));
 
                             if (result < 0) {
-                                System.out.println("지난 날짜입니다.");
+                                System.out.println("예약이 불가능한 날짜입니다.");
                             } else {
                                 break;
                             }
